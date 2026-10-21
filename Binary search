@@ -1,0 +1,31 @@
+
+#include <stdio.h>
+
+int main() {
+    int a[] = {10, 20, 30, 40, 50};
+    int n = 5, key, low = 0, high = 4;
+    int mid, found = 0;
+
+    printf("Enter element to search: ");
+    scanf("%d", &key);
+
+    while (low <= high) {
+        mid = low + (high - low) / 2;
+
+        if (a[mid] == key) {
+            found = 1;
+            break;
+        } else if (a[mid] < key) {
+            low = mid + 1;
+        } else {
+            high = mid - 1;
+        }
+    }
+
+    if (found)
+        printf("Element found at index %d", mid);
+    else
+        printf("Element not found");
+
+    return 0;
+}
