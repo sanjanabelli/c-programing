@@ -1,0 +1,41 @@
+#include <stdio.h>
+
+int power(int base, int exp) {
+    int result = 1;
+
+    while(exp--)
+        result *= base;
+
+    return result;
+}
+
+int main() {
+    int n, temp, digits = 0, sum = 0;
+
+    scanf("%d", &n);
+
+    if(n < 0) {
+        printf("Not Armstrong");
+        return 0;
+    }
+
+    temp = n;
+
+    do {
+        digits++;
+        temp /= 10;
+    } while(temp != 0);
+
+    temp = n;
+
+    do {
+        int digit = temp % 10;
+        sum += power(digit, digits);
+        temp /= 10;
+    } while(temp != 0);
+
+    printf("%s", sum == n ?
+           "Armstrong Number" : "Not Armstrong");
+
+    return 0;
+}
